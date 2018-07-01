@@ -1,0 +1,27 @@
+{
+  "name": "wribbn",
+  "version": "1.0.0",
+  "author": "Tom Penzer thepenzone.com github.com/tompenzer",
+  "description": "Wribbn Backend demo app",
+  "keywords": "wribbn mongodb expressjs",
+  "homepage": "https://github.com/tompenzer/wribbn",
+  "license": "MIT",
+  "repository": "github:tompenzer/wribbn",
+  "private": true,
+  "dependencies": {
+    "connect-mongo": "^2.0.1",
+    "express": "^4.16.3",
+    "express-session": "^1.5.6",
+    "faker": "^4.1.0",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongodb": "^3.1.0",
+    "mongoose": "^5.1.7",
+    "mongoose-seed": "^0.5.0",
+    "mongoose-unique-validator": "^2.0.1",
+    "view-helpers": "^0.1.5",
+    "xregexp": "^4.2.0"
+  },
+  "scripts": {
+  }
+}

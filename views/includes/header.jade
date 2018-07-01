@@ -1,0 +1,20 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container
+    .navbar-brand
+      button.navbar-toggler(
+        type='button',
+        data-toggle='collapse',
+        data-target='.navbar-collapse',
+        aria-controls='navbarSupportedContent',
+        aria-expanded='false'
+        aria-label='Toggle navigation'
+      )
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') Wribbn Backend Demo - Tom Penzer
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.nav-item(class=isActive('/users') ? 'active' : '')
+          a.nav-link(href="/users", title="list users") Users

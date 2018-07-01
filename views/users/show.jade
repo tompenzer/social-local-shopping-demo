@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block main
+  h1= user.name
+  img.mb-2(src=user.image, alt=user.name)
+  p=user.bio
+
+  .meta.mb-4
+    span.muted= 'Account created: ' + formatDate(user.createdAt)
+| &nbsp;&nbsp;

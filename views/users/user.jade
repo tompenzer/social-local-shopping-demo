@@ -1,0 +1,9 @@
+.user
+  img.mb-2(src=user.image, alt=user.name)
+  h3
+    a(href='/users/'+user._id, title=user.name) #{user.name}
+  p=user.bio
+
+  .meta.mb-4
+    span.muted= formatDate(user.createdAt)
+| &nbsp;&nbsp;
