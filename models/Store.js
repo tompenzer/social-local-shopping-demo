@@ -39,7 +39,7 @@ StoreSchema.statics = {
   },
 
   /**
-   * List users
+   * List stores
    *
    * @param {Object} options
    * @api private

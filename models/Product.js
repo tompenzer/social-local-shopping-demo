@@ -48,7 +48,7 @@ ProductSchema.statics = {
   },
 
   /**
-   * List users
+   * List products
    *
    * @param {Object} options
    * @api private

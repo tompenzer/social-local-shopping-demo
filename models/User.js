@@ -96,8 +96,8 @@ UserSchema.methods = {
   /**
    * Update user location
    *
-   * @param {String} latitude
    * @param {String} longitude
+   * @param {String} latitude
    * @api private
    */
   addLocation: function(longitude, latitude){
