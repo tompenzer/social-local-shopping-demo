@@ -100,11 +100,8 @@ UserSchema.methods = {
    * @param {String} longitude
    * @api private
    */
-  addLocation: function(latitude, longitude){
-    this.lastLocation = {
-      latitude: latitude,
-      longitude: longitude
-    };
+  addLocation: function(longitude, latitude){
+    this.lastLocation = [longitude, latitude];
   },
 }
 
