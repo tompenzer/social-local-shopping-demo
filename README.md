@@ -35,8 +35,7 @@ You should be able to access the site in your browser at the following address:
 http://localhost:4000
 
 Note that there is no data yet seeded. To run the seeds, adding 10 dummy users
-and 10 stores, each with 10 products, run the following command from in the
-project directory:
+and 10 stores, each with 10 products, run the following command:
 ```
 $ docker-compose run --rm wribbn node seed.js
 ```
