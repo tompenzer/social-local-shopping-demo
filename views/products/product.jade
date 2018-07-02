@@ -1,0 +1,10 @@
+.product
+  - each image, i in product.images
+    img.mb-2(src=image, alt=product.name + i)
+  h3
+    a(href= '/product/' + product._id, title= product.name) #{product.name}
+  p=product.description
+
+  .meta.mb-4
+    span.muted= formatDate(product.createdAt)
+| &nbsp;&nbsp;

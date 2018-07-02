@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block main
+  h1= title
+
+block content
+  - if (products.length)
+    - each product in products
+      include product
+
+    - if (pages > 1)
+      ul.pagination
+        != createPagination(pages, page)
+  - else
+    h4.muted No followed store products were found.&nbsp;

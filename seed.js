@@ -37,7 +37,8 @@ for (let i = 0; i < 10; i++) {
       latitude: faker.address.latitude(),
       longitude: faker.address.longitude(),
       createdAt: faker.date.past()
-    }]
+    }],
+    followedStores: []
   });
 
   // Generate Stores with two locations each
@@ -56,26 +57,15 @@ for (let i = 0; i < 10; i++) {
   });
 }
 
-users.forEach(function(user, index) {
-  let newUser = new User(user);
-
-  users[index] = null;
-  users = users.filter((n) => (n));
-
-  newUser.save();
-
-  console.log(`User[${index}] Seeded.`);
-});
-
 stores.forEach(function(store, index) {
   let products = [];
 
+  // Generate ten products per store.
   for (let i = 0; i < 10; i++) {
-    // Generate Stores with two locations each
     products.push({
       name: faker.commerce.productName(),
       description: faker.lorem.paragraph(),
-      images: [faker.image.fashion()],
+      images: [faker.image.image()],
       url: faker.internet.url(),
       price: faker.commerce.price(),
       priceMSRP: faker.commerce.price(),
@@ -92,12 +82,21 @@ stores.forEach(function(store, index) {
 
   let newStore = new Store(store);
 
-  stores[index] = null;
-  stores = stores.filter((n) => (n));
-
   newStore.save();
 
+  // Push a ref to the newly created Store to the followedStores for the User
+  // with the same index, so each user gets one.
+  users[index].followedStores.push({ _id: newStore._id });
+
   console.log(`Store[${index}] Seeded.`);
+});
+
+users.forEach(function(user, index) {
+  let newUser = new User(user);
+
+  newUser.save();
+
+  console.log(`User[${index}] Seeded.`);
 });
 
 function handle(signal) {

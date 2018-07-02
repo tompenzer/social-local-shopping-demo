@@ -2,8 +2,11 @@ extends ../layouts/default
 
 block main
   h1= user.name
-  img.mb-2(src=user.image, alt=user.name)
-  p=user.bio
+  img.mb-2(src= user.image, alt= user.name)
+  p= user.bio
+
+  h3
+    a(href='/products/'+user._id, title=user.name) Suggested products
 
   .meta.mb-4
     span.muted= 'Account created: ' + formatDate(user.createdAt)

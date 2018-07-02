@@ -1,6 +1,6 @@
 const users = require('./controllers/users');
-// const stores = require('./controllers/stores');
-// const products = require('./controllers/products');
+const stores = require('./controllers/stores');
+const products = require('./controllers/products');
 
 module.exports = function (app) {
   // home route
@@ -9,13 +9,17 @@ module.exports = function (app) {
   // user routes
   app.param('userId', users.load);
   app.get('/users', users.index);
-  app.get('/users/:userId', users.show);
-
-  // store routes
-  // app.get('/nearby/:userId', stores.nearby);
+  app.get('/user/:userId', users.show);
 
   // product routes
-  // app.get('/products/:userId', products.followed);
+  app.param('productId', products.load);
+  app.get('/products/:userId', products.followed);
+  app.get('/product/:productId', products.show);
+
+  // store routes
+  app.param('storeId', stores.load);
+  app.get('/nearby/:userId', stores.nearby);
+  app.get('/store/:storeId', stores.show);
 
   /**
    * Error handling

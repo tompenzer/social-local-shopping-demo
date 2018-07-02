@@ -11,7 +11,7 @@ const ProductSchema = new Schema({
   description: String,
   images: [{type: String}],
   url: String,
-  category: [{type: Schema.Types.ObjectId, ref: "Category"}],
+  categories: [{type: Schema.Types.ObjectId, ref: "Category"}],
   price: String,
   priceMSRP: String,
   manufacturer: String,
@@ -25,5 +25,45 @@ const ProductSchema = new Schema({
     createdAt: { type : Date, default : Date.now },
   }],
 }, {timestamps: true});
+
+/**
+ * Statics
+ */
+
+ProductSchema.statics = {
+
+  /**
+   * Load
+   *
+   * @param {Object} options
+   * @param {Function} cb
+   * @api private
+   */
+
+  load: function (options, cb) {
+    options.select = options.select || '_id name description images url categories price priceMSRP createdAt';
+    return this.findOne(options.criteria)
+      .select(options.select)
+      .exec(cb);
+  },
+
+  /**
+   * List users
+   *
+   * @param {Object} options
+   * @api private
+   */
+  list: function (options) {
+    const criteria = options.criteria || {};
+    const page = options.page || 0;
+    const limit = options.limit || 30;
+    return this.find(criteria)
+      .populate('product', 'name ')
+      .sort({ name: 1 })
+      .limit(limit)
+      .skip(limit * page)
+      .exec();
+  }
+};
 
 mongoose.model('Product', ProductSchema);

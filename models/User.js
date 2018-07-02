@@ -133,7 +133,7 @@ UserSchema.statics = {
    */
 
   load: function (options, cb) {
-    options.select = options.select || '_id name email image bio createdAt';
+    options.select = options.select || '_id name email image bio createdAt followedStores locations';
     return this.findOne(options.criteria)
       .select(options.select)
       .exec(cb);
