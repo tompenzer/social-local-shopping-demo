@@ -6,7 +6,10 @@ block main
   p= user.bio
 
   h3
-    a(href='/products/'+user._id, title=user.name) Suggested products
+    a(href= '/products/' + user._id, title= 'Suggested products for ' + user.name) Suggested products
+
+  h3
+    a(href= '/nearby/' + user._id, title= 'Stores close to ' + user.name) Nearby stores
 
   .meta.mb-4
     span.muted= 'Account created: ' + formatDate(user.createdAt)

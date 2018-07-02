@@ -1,0 +1,11 @@
+.store
+  img.mb-2(src=store.image, alt=store.name + i)
+
+  h3
+    a(href= '/store/' + store._id, title= store.name) #{store.name}
+
+  p=store.description
+
+  .meta.mb-4
+    span.muted= formatDate(store.createdAt)
+| &nbsp;&nbsp;

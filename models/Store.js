@@ -8,20 +8,10 @@ const StoreSchema = new Schema({
     index: true,
     required: [true, 'can\'t be blank']
   },
-  locations: [{
-    latitude: {
-      type: String,
-      required: [true, 'can\'t be blank'],
-    },
-    longitude: {
-      type: String,
-      required: [true, 'can\'t be blank'],
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now
-    },
-  }],
+  location: {
+    type: [Number],
+    index: '2d'
+  },
   description: String,
   image: String,
   products: [{type: Schema.Types.ObjectId, ref: "Product"}],
@@ -59,7 +49,7 @@ StoreSchema.statics = {
     const page = options.page || 0;
     const limit = options.limit || 30;
     return this.find(criteria)
-      .populate('store', 'name ')
+      .populate('store', 'name')
       .sort({ name: 1 })
       .limit(limit)
       .skip(limit * page)

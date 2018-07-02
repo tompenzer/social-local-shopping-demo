@@ -2,7 +2,8 @@ extends ../layouts/default
 
 block main
   h1= product.name
-  img.mb-2(src=product.image, alt=product.name)
+  - each image, i in product.images
+    img.mb-2(src=image, alt=product.name + i)
 
   h3= '$' + product.price
 

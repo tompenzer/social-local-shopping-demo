@@ -56,20 +56,10 @@ const UserSchema = new Schema({
   image: String,
   followedStores: [{type: Schema.Types.ObjectId, ref: "Store"}, {timestamps: true}],
   ownedStores: [{type: Schema.Types.ObjectId, ref: "Store"}, {timestamps: true}],
-  locations: [{
-    latitude: {
-      type: String,
-      required: [true, 'can\'t be blank'],
-    },
-    longitude: {
-      type: String,
-      required: [true, 'can\'t be blank'],
-    },
-    createdAt: {
-      type : Date,
-      default : Date.now
-    },
-  }],
+  lastLocation: {
+    type: [Number],   // [<longitude>, <latitude>]
+    index: '2d'
+  },
   hash: String,
   salt: String
 }, {timestamps: true});
@@ -111,10 +101,10 @@ UserSchema.methods = {
    * @api private
    */
   addLocation: function(latitude, longitude){
-    this.locations.push({
+    this.lastLocation = {
       latitude: latitude,
       longitude: longitude
-    });
+    };
   },
 }
 
@@ -133,7 +123,7 @@ UserSchema.statics = {
    */
 
   load: function (options, cb) {
-    options.select = options.select || '_id name email image bio createdAt followedStores locations';
+    options.select = options.select || '_id name email image bio createdAt followedStores lastLocation';
     return this.findOne(options.criteria)
       .select(options.select)
       .exec(cb);

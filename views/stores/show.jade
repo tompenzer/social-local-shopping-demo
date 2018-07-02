@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block main
+  h1= store.name
+  img.mb-2(src=store.image, alt=store.name)
+
+  p=store.description
+
+  .meta.mb-4
+    span.muted= 'Store added: ' + formatDate(store.createdAt)
+| &nbsp;&nbsp;

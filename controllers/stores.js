@@ -22,22 +22,34 @@ exports.load = async(function* (req, res, next, _id) {
  *  Show the stores closest to a user's last location'.
  */
 
-exports.nearest = function (req, res) {
+exports.nearby = async(function* (req, res) {
   const user = req.profile;
+  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
+  const limit = 20;
+  const options = {
+    limit: limit,
+    page: page
+  };
 
-  res.json(user);
-  // Store.find({_id: {$in: user.followedStores}}, function(err, stores) {
-  //   let productIds = [];
-  //   stores.map((store) => { productIds = productIds.concat(store.products); });
-  //
-  //   Product.find({_id: {$in: productIds}}, function(err, products) {
-  //     res.render('products/followed', {
-  //       title: 'Suggestions for ' + user.name,
-  //       products: products
-  //     });
-  //   });
-  // });
-};
+  if (user.lastLocation) {
+    options.criteria = {
+      location: {
+        $near: user.lastLocation,
+        $maxDistance: 50
+      }
+    };
+  }
+
+  const stores = yield Store.list(options);
+  const count = yield Store.count();
+
+  res.render('stores/nearby', {
+    title: 'Nearby stores',
+    stores: stores,
+    page: page + 1,
+    pages: Math.ceil(count / limit)
+  });
+});
 
 /**
  *  Show a store's details.

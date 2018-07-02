@@ -29,15 +29,7 @@ for (let i = 0; i < 10; i++) {
     email: faker.internet.email(),
     bio: faker.lorem.paragraph(),
     image: faker.image.avatar(),
-    locations: [{
-      latitude: faker.address.latitude(),
-      longitude: faker.address.longitude(),
-      createdAt: faker.date.recent()
-    },{
-      latitude: faker.address.latitude(),
-      longitude: faker.address.longitude(),
-      createdAt: faker.date.past()
-    }],
+    lastLocation: [faker.address.longitude(), faker.address.latitude()],
     followedStores: []
   });
 
@@ -45,14 +37,8 @@ for (let i = 0; i < 10; i++) {
   stores.push({
     name: faker.company.companyName(),
     description: faker.company.bs(),
-    image: faker.image.business(),
-    locations: [{
-      latitude: faker.address.latitude(),
-      longitude: faker.address.longitude()
-    },{
-      latitude: faker.address.latitude(),
-      longitude: faker.address.longitude()
-    }],
+    image: faker.image.image(),
+    location: [faker.address.longitude(), faker.address.latitude()],
     products: [],
   });
 }
