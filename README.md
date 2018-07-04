@@ -12,12 +12,12 @@ Development environment requirements:
 dev tools including `git` upon attempting to `git clone` in the command below if
 you don't already have it installed.
 - [Docker](https://store.docker.com/search?offering=community&type=edition) - On
-Mac, you can download the installer [directly](https://download.docker.com/mac/stable/Docker.dmg).
+Mac, you can download the installer directly [here](https://download.docker.com/mac/stable/Docker.dmg).
 
 Clone the repo and start up the development environment using the terminal on
 your local machine:
 ```
-$ git clone git@github.com:tompenzer/wribbn.git
+$ git clone https://github.com/tompenzer/wribbn.git
 $ cd wribbn
 $ docker-compose run --rm wribbn yarn install
 $ docker-compose up
