@@ -43,12 +43,10 @@ for (let i = 0; i < 10; i++) {
   });
 }
 
-stores.forEach(function(store, index) {
-  let products = [];
-
+stores.forEach((store, index) => {
   // Generate ten products per store.
   for (let i = 0; i < 10; i++) {
-    products.push({
+    newProduct = new Product({
       name: faker.commerce.productName(),
       description: faker.lorem.paragraph(),
       images: [faker.image.image()],
@@ -56,10 +54,6 @@ stores.forEach(function(store, index) {
       price: faker.commerce.price(),
       priceMSRP: faker.commerce.price(),
     });
-  }
-
-  for (product of products) {
-    newProduct = new Product(product);
 
     newProduct.save();
 
@@ -77,7 +71,7 @@ stores.forEach(function(store, index) {
   console.log(`Store[${index}] Seeded.`);
 });
 
-users.forEach(function(user, index) {
+users.forEach((user, index) => {
   let newUser = new User(user);
 
   newUser.save();
@@ -85,9 +79,9 @@ users.forEach(function(user, index) {
   console.log(`User[${index}] Seeded.`);
 });
 
-function handle(signal) {
-  process.exit();
+function handleInterrupt() {
+  process.exit(1);
 }
 
-process.on('SIGINT', handle);
-process.on('SIGTERM', handle);
+process.on('SIGINT', handleInterrupt);
+process.on('SIGTERM', handleInterrupt);
