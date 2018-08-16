@@ -1,12 +1,12 @@
 {
-  "name": "wribbn",
+  "name": "social-local-shopping-demo",
   "version": "1.0.0",
   "author": "Tom Penzer thepenzone.com github.com/tompenzer",
-  "description": "Wribbn Backend demo app",
-  "keywords": "wribbn mongodb expressjs",
-  "homepage": "https://github.com/tompenzer/wribbn",
+  "description": "Social local shopping demo app",
+  "keywords": "social local shopping demo mongodb expressjs",
+  "homepage": "https://github.com/tompenzer/social-local-shopping-demo",
   "license": "MIT",
-  "repository": "github:tompenzer/wribbn",
+  "repository": "github:tompenzer/social-local-shopping-demo",
   "private": true,
   "dependencies": {
     "co": "^4.6.0",

@@ -1,5 +1,5 @@
-# Wribbn Backend Demo
-A simple MongoDB/Mongoose/Express app for Wribbn's backend challenge.
+# Social Local Shopping Demo
+A simple MongoDB/Mongoose/Express demo app.
 
 Inspiration:
 https://github.com/madhums/node-express-mongoose-demo
@@ -18,9 +18,9 @@ For Windows, it's available [here](https://download.docker.com/win/stable/Docker
 Clone the repo and start up the development environment using the terminal on
 your local machine:
 ```
-$ git clone https://github.com/tompenzer/wribbn.git
-$ cd wribbn
-$ docker-compose run --rm wribbn yarn install
+$ git clone https://github.com/tompenzer/social-local-shopping-demo.git
+$ cd social-local-shopping-demo
+$ docker-compose run --rm social-local-shopping-demo yarn install
 $ docker-compose up
 ```
 The first time you do this, you might want to go make yourself a beverage while
@@ -43,7 +43,7 @@ and 10 stores, each with 10 products, run the following command (you can open a
 new terminal tab or window to avoid disturbing the node server.js process;
 interrupting that will stop the app):
 ```
-$ docker-compose run --rm wribbn node seed.js
+$ docker-compose run --rm social-local-shopping-demo node seed.js
 ```
 You should see some indication that the User and Store models have been seeded.
 At this point, if you refresh the app, you should see a list of users. To exit

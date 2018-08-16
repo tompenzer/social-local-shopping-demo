@@ -2,8 +2,8 @@ version: '3.5'
 
 services:
 
-  wribbn:
-    container_name: wribbn
+  social-local-shopping-demo:
+    container_name: social-local-shopping-demo
     build:
       context: .
       dockerfile: Dockerfile
